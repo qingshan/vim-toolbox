@@ -15,6 +15,13 @@ nmap <silent> gK :call toolbox#dict#goldendict('', '')<CR>
 vmap <silent> gK :call toolbox#dict#goldendict('', 'v')<CR>
 ```
 
+## Zeal
+
+```
+nmap <silent> gz :call toolbox#zeal#open('', '')<CR>
+vmap <silent> gz :call toolbox#zeal#open('', 'v')<CR>
+```
+
 ## Markdown
 
 ```
