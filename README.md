@@ -5,7 +5,7 @@ vim toolbox plugin: StarDict, GoldenDict, Zeal, Markdown
 ## Installation
 
 ```vim
-Plug 'skywind3000/vim-dict'
+Plug 'qingshan/vim-toolbox'
 ```
 
 ## StarDict
