@@ -1,4 +1,4 @@
-function! toolbox#dict#get_word(mode) abort
+function! toolbox#dict#get_word(mode)
   if a:mode == 'v'
     let l:pos = getpos("'<")
     call setpos('.', l:pos)
@@ -8,7 +8,7 @@ function! toolbox#dict#get_word(mode) abort
   endif
 endfunction
 
-function! toolbox#dict#stardict(word, mode)
+function! toolbox#dict#stardict(word, mode) abort
   let cmd = 'sdcv -n -e '
   let word = a:word
   if word == ''
@@ -23,7 +23,7 @@ function! toolbox#dict#stardict(word, mode)
     \ })
 endfunction
 
-function! toolbox#dict#goldendict(word, mode)
+function! toolbox#dict#goldendict(word, mode) abort
   let cmd = 'goldendict '
   let word = a:word
   if word == ''

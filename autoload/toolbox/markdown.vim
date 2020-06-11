@@ -1,4 +1,4 @@
-function! toolbox#markdown#build_link(cursor)
+function! toolbox#markdown#build_link(cursor) abort
   if a:cursor
     let url = toolbox#markdown#get_url()
     if url == ''
@@ -21,11 +21,11 @@ endfunction
 
 function! toolbox#markdown#get_page_title(url)
   if executable('curl')
-    let cmd = 'curl -so - ' . shellescape(a:url) . '| grep -iPo ''(?<=<title>)(.*)(?=</title>)'''
+    let cmd = 'curl -so - %s | grep -iPo "(?<=<title>)(.*)(?=</title>)"', shellescape(a:url))
     let title = trim(system(cmd))
     return title
   elseif executable('wget')
-    let cmd = 'wget -qO - ' . shellescape(a:url) . '| grep -iPo ''(?<=<title>)(.*)(?=</title>)'''
+    let cmd = printf('wget -qO - %s | grep -iPo "(?<=<title>)(.*)(?=</title>)"', shellescape(a:url))
     let title = trim(system(cmd))
     return title
   else
@@ -36,7 +36,7 @@ endfunction
 function! toolbox#markdown#to_markdown(url)
   let title = toolbox#markdown#get_page_title(a:url)
   let reg = @r
-  let @r = "[".title."](".a:url.")"
+  let @r = '['.title.']('.a:url.')'
   execute 'normal viu"rP'
   let @r = reg
 endfunction
