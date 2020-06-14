@@ -9,12 +9,12 @@ function! toolbox#dict#get_word(mode)
 endfunction
 
 function! toolbox#dict#stardict(word, mode) abort
-  let cmd = 'sdcv -n -e '
   let word = a:word
   if word == ''
     let word = toolbox#dict#get_word(a:mode)
   endif
-  let output = system(cmd . word)
+  let cmd = printf('sdcv -n -e %s', shellescape(word))
+  let output = system(cmd)
   call popup_clear()
   call popup_atcursor(split(output, '\n'), {
     \ 'padding': [1, 1, 1, 1],
@@ -24,10 +24,10 @@ function! toolbox#dict#stardict(word, mode) abort
 endfunction
 
 function! toolbox#dict#goldendict(word, mode) abort
-  let cmd = 'goldendict '
   let word = a:word
   if word == ''
     let word = toolbox#dict#get_word(a:mode)
   endif
-  call system(cmd . word)
+  let cmd = printf('goldendict %s', shellescape(word))
+  call system(cmd)
 endfunction

@@ -13,6 +13,6 @@ function! toolbox#zeal#open(word, mode) abort
   if word == ''
     let word = toolbox#zeal#get_word(a:mode)
   endif
-  let cmd = printf('zeal %s', word)
+  let cmd = printf('zeal %s', shellescape(word))
   call system(cmd)
 endfunction
